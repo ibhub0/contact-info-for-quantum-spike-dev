@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Me - Mr Infinity</title>
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #222222;
+            --link-color: #0066cc;
+        }
+        [data-theme="dark"] {
+            --bg-color: #121212;
+            --text-color: #e0e0e0;
+            --link-color: #58a6ff;
+        }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 1rem;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            text-align: center;
+            max-width: 600px;
+        }
+        .toggle-btn {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: 2px solid var(--text-color);
+            border-radius: 4px;
+            padding: 0.3rem 0.6rem;
+            cursor: pointer;
+            color: var(--text-color);
+        }
+    </style>
+</head>
+<body>
+    <button class="toggle-btn" id="themeToggle">Toggle Dark/Light</button>
+    <div class="container">
+        <h1>Contact Me</h1>
+        <p><strong>Name:</strong> Mr Infinity aka M Pal</p>
+        <p><strong>Email:</strong> <a href="mailto:infinitybotz2026@gmail.com">infinitybotz2026@gmail.com</a></p>
+        <p><strong>Telegram:</strong> <a href="https://t.me/talk_mrs_bot" target="_blank">@talk_mrs_bot</a></p>
+        <p><strong>Telegram (alt):</strong> <a href="https://t.me/infinitymp007" target="_blank">@infinitymp007</a></p>
+    </div>
+    <script>
+        // Theme toggle logic
+        const toggleBtn = document.getElementById('themeToggle');
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.dataset.theme = currentTheme;
+        toggleBtn.textContent = currentTheme === 'dark' ? 'Light Mode' : 'Dark Mode';
+        toggleBtn.addEventListener('click', () => {
+            const newTheme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+            document.documentElement.dataset.theme = newTheme;
+            localStorage.setItem('theme', newTheme);
+            toggleBtn.textContent = newTheme === 'dark' ? 'Light Mode' : 'Dark Mode';
+        });
+    </script>
+</body>
+</html>
