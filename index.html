@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Developer Contact Portal - InfinityBotz Support & Direct">
-    <title>InfinityBotz | Developer Contact</title>
+    <meta name="description" content="Developer Contact Portal - Support & Direct">
+    <title>Developer Contact</title>
     
     <!-- Google Fonts: JetBrains Mono & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -83,7 +83,7 @@
         /* Card Container */
         .dev-card {
             width: 100%;
-            max-width: 450px;
+            max-width: 440px;
             background: var(--card-bg);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
@@ -262,12 +262,6 @@
             border: 1px solid rgba(0, 242, 254, 0.25);
         }
 
-        .icon-box.tg-user {
-            background: rgba(139, 92, 246, 0.12);
-            color: var(--accent-purple);
-            border: 1px solid rgba(139, 92, 246, 0.25);
-        }
-
         .item-info {
             min-width: 0;
         }
@@ -401,7 +395,7 @@
                 <span class="status-dot"></span> SYSTEM ONLINE
             </div>
             <h1 class="card-title">Developer Contact</h1>
-            <p class="card-subtitle">&lt;InfinityBotz / Support &amp; Direct&gt;</p>
+            <p class="card-subtitle">&lt;QuantumHub / Support &amp; Direct&gt;</p>
 
             <div class="contact-list">
                 <!-- Email Item -->
@@ -412,27 +406,27 @@
                         </div>
                         <div class="item-info">
                             <div class="item-label">Email</div>
-                            <div class="item-value">infinitybotz2026@gmail.com</div>
+                            <div class="item-value">quantumhub07@gmail.com</div>
                         </div>
                     </div>
                     <div class="item-actions">
-                        <button class="action-btn" onclick="copyText('infinitybotz2026@gmail.com', this)" title="Copy Email">
+                        <button class="action-btn" onclick="copyText('quantumhub07@gmail.com', this)" title="Copy Email">
                             <i class="fa-regular fa-copy"></i>
                         </button>
-                        <a href="mailto:infinitybotz2026@gmail.com" class="action-btn" title="Send Email">
+                        <a href="mailto:quantumhub07@gmail.com" class="action-btn" title="Send Email">
                             <i class="fa-solid fa-arrow-up-right-from-square"></i>
                         </a>
                     </div>
                 </div>
 
-                <!-- Telegram 1 Item -->
+                <!-- Telegram Item -->
                 <div class="contact-item">
                     <div class="item-left">
                         <div class="icon-box tg-bot">
-                            <i class="fa-solid fa-robot"></i>
+                            <i class="fa-brands fa-telegram"></i>
                         </div>
                         <div class="item-info">
-                            <div class="item-label">Telegram 1 (Contact Bot)</div>
+                            <div class="item-label">Telegram</div>
                             <div class="item-value">@talk_mrs_bot</div>
                         </div>
                     </div>
@@ -441,28 +435,7 @@
                             <i class="fa-regular fa-copy"></i>
                         </button>
                         <a href="https://t.me/talk_mrs_bot" target="_blank" rel="noopener noreferrer" class="action-btn" title="Open in Telegram">
-                            <i class="fa-brands fa-telegram"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Telegram 2 Item -->
-                <div class="contact-item">
-                    <div class="item-left">
-                        <div class="icon-box tg-user">
-                            <i class="fa-solid fa-user-astronaut"></i>
-                        </div>
-                        <div class="item-info">
-                            <div class="item-label">Telegram 2 (Developer)</div>
-                            <div class="item-value">@infinitymp007</div>
-                        </div>
-                    </div>
-                    <div class="item-actions">
-                        <button class="action-btn" onclick="copyText('@infinitymp007', this)" title="Copy Username">
-                            <i class="fa-regular fa-copy"></i>
-                        </button>
-                        <a href="https://t.me/infinitymp007" target="_blank" rel="noopener noreferrer" class="action-btn" title="Open in Telegram">
-                            <i class="fa-brands fa-telegram"></i>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
                         </a>
                     </div>
                 </div>
@@ -487,7 +460,6 @@
         const htmlEl = document.documentElement;
         const themeIcon = document.getElementById('theme-icon');
 
-        // Load saved theme on startup
         const savedTheme = localStorage.getItem('dev_card_theme') || 'dark';
         applyTheme(savedTheme);
 
