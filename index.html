@@ -1,194 +1,452 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact – Mr Infinity</title>
-  <!-- Bootstrap 5 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ENjdO4Dr2bkBIFxQpeoYz1HI5W8F7aZ9U6V9K/6a6Uq1v5V4n5pJY2PpG1rR5J7c" crossorigin="anonymous" />
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <!-- Prism for code styling -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
-  <style>
-    :root {
-      --bg-light: #f8f9fa;
-      --bg-dark: #0d0d0d;
-      --text-light: #212529;
-      --text-dark: #e0e0e0;
-      --primary: #0d6efd;
-      --glass-bg: rgba(255, 255, 255, 0.2);
-      --glass-blur: 10px;
-    }
-    [data-theme="dark"] {
-      --bg-color: var(--bg-dark);
-      --text-color: var(--text-dark);
-      --link-color: #58a6ff;
-      --glass-bg: rgba(0,0,0,0.3);
-    }
-    [data-theme="light"] {
-      --bg-color: var(--bg-light);
-      --text-color: var(--text-light);
-      --link-color: var(--primary);
-    }
-    body {
-      background: var(--bg-color);
-      color: var(--text-color);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-      margin: 0;
-      overflow-x: hidden;
-      transition: background 0.3s, color 0.3s;
-    }
-    a { color: var(--link-color); }
-    a:hover { text-decoration: underline; }
-    .hero {
-      position: relative;
-      padding: 6rem 1rem 4rem;
-      text-align: center;
-      color: #fff;
-      background: linear-gradient(135deg, #4e54c8, #8f94fb);
-    }
-    .hero h1 { font-size: 3rem; margin-bottom: .5rem; }
-    .hero p { font-size: 1.2rem; }
-    .glass-card {
-      background: var(--glass-bg);
-      backdrop-filter: blur(var(--glass-blur));
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: .75rem;
-      box-shadow: 0 4px 30px rgba(0,0,0,0.1);
-      transition: transform .2s, box-shadow .2s;
-    }
-    .glass-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,.15); }
-    .icon { font-size: 1.5rem; margin-right: .5rem; }
-    .toggle-btn {
-      position: fixed;
-      top: 1rem;
-      right: 1rem;
-      background: none;
-      border: 2px solid var(--text-color);
-      border-radius: .4rem;
-      padding: .3rem .6rem;
-      cursor: pointer;
-      color: var(--text-color);
-    }
-    footer { text-align: center; padding: 1rem 0; margin-top: 2rem; font-size: .9rem; color: var(--text-color); }
-    /* Particle canvas overlay */
-    #tsparticles { position: absolute; width: 100%; height: 100%; top:0; left:0; z-index: -1; }
-    .copy-btn { cursor: pointer; background: var(--link-color); color:#fff; border:none; border-radius:.3rem; padding:.2rem .5rem; margin-left:.5rem; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer Contact Card</title>
+    <!-- Google Fonts: JetBrains Mono & Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-dark: #090d16;
+            --card-bg: rgba(17, 24, 39, 0.85);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --accent-cyan: #00f2fe;
+            --accent-blue: #4facfe;
+            --accent-purple: #8b5cf6;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --success: #10b981;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 15% 20%, rgba(79, 172, 254, 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 85% 80%, rgba(139, 92, 246, 0.12) 0%, transparent 40%);
+            font-family: 'Inter', sans-serif;
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* Card Container */
+        .dev-card {
+            width: 100%;
+            max-width: 440px;
+            background: var(--card-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7),
+                        0 0 30px rgba(0, 242, 254, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .dev-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.8),
+                        0 0 40px rgba(79, 172, 254, 0.12);
+            border-color: rgba(79, 172, 254, 0.25);
+        }
+
+        /* Terminal Top Bar */
+        .terminal-header {
+            background: rgba(11, 15, 25, 0.9);
+            padding: 12px 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .window-dots {
+            display: flex;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot.red { background: #ff5f56; }
+        .dot.yellow { background: #ffbd2e; }
+        .dot.green { background: #27c93f; }
+
+        .terminal-title {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Profile / Intro Section */
+        .card-body {
+            padding: 24px;
+        }
+
+        .dev-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: var(--success);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            padding: 4px 10px;
+            border-radius: 999px;
+            margin-bottom: 12px;
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            background: var(--success);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--success);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 4px;
+            background: linear-gradient(90deg, #fff, #9ca3af);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .card-subtitle {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.82rem;
+            color: var(--accent-blue);
+            margin-bottom: 22px;
+        }
+
+        /* Contact Items List */
+        .contact-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 14px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.25s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(0, 242, 254, 0.3);
+            transform: translateX(3px);
+        }
+
+        .item-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            min-width: 0;
+        }
+
+        .icon-box {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .icon-box.email {
+            background: rgba(239, 68, 68, 0.12);
+            color: #f87171;
+            border: 1px solid rgba(239, 68, 68, 0.25);
+        }
+
+        .icon-box.tg-bot {
+            background: rgba(0, 242, 254, 0.12);
+            color: var(--accent-cyan);
+            border: 1px solid rgba(0, 242, 254, 0.25);
+        }
+
+        .icon-box.tg-user {
+            background: rgba(139, 92, 246, 0.12);
+            color: #a78bfa;
+            border: 1px solid rgba(139, 92, 246, 0.25);
+        }
+
+        .item-info {
+            min-width: 0;
+        }
+
+        .item-label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--text-muted);
+            margin-bottom: 3px;
+            font-weight: 600;
+        }
+
+        .item-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.88rem;
+            color: var(--text-main);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Action Buttons */
+        .item-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+
+        .action-btn {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            width: 34px;
+            height: 34px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .action-btn:hover {
+            background: rgba(79, 172, 254, 0.15);
+            color: var(--accent-cyan);
+            border-color: rgba(0, 242, 254, 0.4);
+        }
+
+        .action-btn.copied {
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--success);
+            border-color: var(--success);
+        }
+
+        /* Footer Code Snippet */
+        .card-footer {
+            margin-top: 22px;
+            padding-top: 16px;
+            border-top: 1px dashed var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .code-tag {
+            color: var(--accent-purple);
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: #111827;
+            border: 1px solid var(--success);
+            color: var(--text-main);
+            padding: 10px 16px;
+            border-radius: 10px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            z-index: 1000;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .toast i {
+            color: var(--success);
+        }
+    </style>
 </head>
-<body data-theme="light">
-  <div id="tsparticles"></div>
-  <button class="toggle-btn" id="themeToggle">Toggle Dark/Light</button>
-  <section class="hero">
-    <h1>Contact Me</h1>
-    <p>Mr Infinity aka M Pal – Full‑stack Developer & Open‑Source Enthusiast</p>
-  </section>
+<body>
 
-  <div class="container my-5">
-    <div class="row g-4 justify-content-center">
-      <!-- Email Card -->
-      <div class="col-md-6 col-lg-4">
-        <div class="glass-card p-4 text-center">
-          <i class="fas fa-envelope icon"></i>
-          <h5 class="mt-2">Email</h5>
-          <p class="mb-0"><a href="mailto:infinitybotz2026@gmail.com" id="emailLink">infinitybotz2026@gmail.com</a>
-            <button class="copy-btn" data-clipboard-text="infinitybotz2026@gmail.com">Copy</button>
-          </p>
+    <div class="dev-card">
+        <!-- Terminal Top Bar -->
+        <div class="terminal-header">
+            <div class="window-dots">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+            </div>
+            <div class="terminal-title">
+                <i class="fa-solid fa-terminal"></i> contact_info.sh
+            </div>
         </div>
-      </div>
-      <!-- Telegram 1 Card -->
-      <div class="col-md-6 col-lg-4">
-        <div class="glass-card p-4 text-center">
-          <i class="fab fa-telegram-plane icon"></i>
-          <h5 class="mt-2">Telegram 1</h5>
-          <p class="mb-0"><a href="https://t.me/talk_mrs_bot" target="_blank">@talk_mrs_bot</a></p>
+
+        <!-- Main Card Body -->
+        <div class="card-body">
+            <div class="dev-badge">
+                <span class="status-dot"></span> SYSTEM ONLINE
+            </div>
+            <h2 class="card-title">Developer Contact</h2>
+            <p class="card-subtitle">&lt;InfinityBotz / Support &amp; Direct&gt;</p>
+
+            <div class="contact-list">
+                <!-- Email Item -->
+                <div class="contact-item">
+                    <div class="item-left">
+                        <div class="icon-box email">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div class="item-info">
+                            <div class="item-label">Email</div>
+                            <div class="item-value" id="email-val">infinitybotz2026@gmail.com</div>
+                        </div>
+                    </div>
+                    <div class="item-actions">
+                        <button class="action-btn" onclick="copyText('infinitybotz2026@gmail.com', this)" title="Copy Email">
+                            <i class="fa-regular fa-copy"></i>
+                        </button>
+                        <a href="mailto:infinitybotz2026@gmail.com" class="action-btn" title="Send Email">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Telegram 1 Item -->
+                <div class="contact-item">
+                    <div class="item-left">
+                        <div class="icon-box tg-bot">
+                            <i class="fa-solid fa-robot"></i>
+                        </div>
+                        <div class="item-info">
+                            <div class="item-label">Telegram 1 (Contact Bot)</div>
+                            <div class="item-value">@talk_mrs_bot</div>
+                        </div>
+                    </div>
+                    <div class="item-actions">
+                        <button class="action-btn" onclick="copyText('@talk_mrs_bot', this)" title="Copy Username">
+                            <i class="fa-regular fa-copy"></i>
+                        </button>
+                        <a href="https://t.me/talk_mrs_bot" target="_blank" rel="noopener noreferrer" class="action-btn" title="Open in Telegram">
+                            <i class="fa-brands fa-telegram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Telegram 2 Item -->
+                <div class="contact-item">
+                    <div class="item-left">
+                        <div class="icon-box tg-user">
+                            <i class="fa-solid fa-user-astronaut"></i>
+                        </div>
+                        <div class="item-info">
+                            <div class="item-label">Telegram 2 (Developer)</div>
+                            <div class="item-value">@infinitymp007</div>
+                        </div>
+                    </div>
+                    <div class="item-actions">
+                        <button class="action-btn" onclick="copyText('@infinitymp007', this)" title="Copy Username">
+                            <i class="fa-regular fa-copy"></i>
+                        </button>
+                        <a href="https://t.me/infinitymp007" target="_blank" rel="noopener noreferrer" class="action-btn" title="Open in Telegram">
+                            <i class="fa-brands fa-telegram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card Footer -->
+            <div class="card-footer">
+                <span><span class="code-tag">status:</span> 200 OK</span>
+                <span><i class="fa-solid fa-bolt" style="color: #fbbf24;"></i> Fast Response</span>
+            </div>
         </div>
-      </div>
-      <!-- Telegram 2 Card -->
-      <div class="col-md-6 col-lg-4">
-        <div class="glass-card p-4 text-center">
-          <i class="fab fa-telegram-plane icon"></i>
-          <h5 class="mt-2">Telegram 2</h5>
-          <p class="mb-0"><a href="https://t.me/infinitymp007" target="_blank">@infinitymp007</a></p>
-        </div>
-      </div>
     </div>
 
-    <!-- Developer Bio / Code snippet -->
-    <div class="row mt-5">
-      <div class="col-12">
-        <div class="glass-card p-4">
-          <h5>About Me (as code)</h5>
-          <pre class="language-javascript"><code class="language-javascript">const mrInfinity = {
-  name: "M Pal",
-  role: "Full‑Stack Engineer",
-  languages: ["JavaScript", "Python", "C++", "Rust"],
-  tools: ["React", "Node.js", "Docker", "GitHub Actions"],
-  contact: {
-    email: "infinitybotz2026@gmail.com",
-    telegram: ["@talk_mrs_bot", "@infinitymp007"]
-  }
-};
-
-export default mrInfinity;
-</code></pre>
-        </div>
-      </div>
+    <!-- Copy Toast Notification -->
+    <div class="toast" id="toast">
+        <i class="fa-solid fa-circle-check"></i>
+        <span id="toast-msg">Copied to clipboard!</span>
     </div>
-  </div>
 
-  <footer>
-    © 2026 Mr Infinity – Crafted with ❤️ and <a href="https://getbootstrap.com/" target="_blank">Bootstrap</a>.
-  </footer>
+    <script>
+        let toastTimeout;
 
-  <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+P5nY0nU+9E+3K3z0xQ5hXrC6iR9" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
-  <!-- tsParticles background -->
-  <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.14.0/tsparticles.bundle.min.js"></script>
-  <script>
-    // Theme toggle logic
-    const toggleBtn = document.getElementById('themeToggle');
-    const saved = localStorage.getItem('theme') || 'light';
-    document.body.setAttribute('data-theme', saved);
-    toggleBtn.textContent = saved === 'dark' ? 'Light Mode' : 'Dark Mode';
-    toggleBtn.addEventListener('click', () => {
-      const newTheme = document.body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-      document.body.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
-      toggleBtn.textContent = newTheme === 'dark' ? 'Light Mode' : 'Dark Mode';
-    });
+        function copyText(text, btnElement) {
+            navigator.clipboard.writeText(text).then(() => {
+                // Button icon change animation
+                const icon = btnElement.querySelector('i');
+                const originalClass = icon.className;
+                
+                btnElement.classList.add('copied');
+                icon.className = 'fa-solid fa-check';
 
-    // Clipboard copy for email
-    document.querySelectorAll('.copy-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        navigator.clipboard.writeText(btn.getAttribute('data-clipboard-text')).then(() => {
-          btn.textContent = 'Copied!';
-          setTimeout(() => btn.textContent = 'Copy', 1500);
-        });
-      });
-    });
+                setTimeout(() => {
+                    btnElement.classList.remove('copied');
+                    icon.className = originalClass;
+                }, 1800);
 
-    // tsParticles config – subtle moving dots
-    tsParticles.load('tsparticles', {
-      background: { color: { value: '' } },
-      fpsLimit: 60,
-      particles: {
-        number: { value: 70 },
-        color: { value: '#ffffff' },
-        opacity: { value: 0.3 },
-        size: { value: { min: 1, max: 4 } },
-        move: { enable: true, speed: 0.6, direction: "none", random: false, straight: false, outModes: { default: "out" } },
-        lineLinked: { enable: true, distance: 120, color: '#ffffff', opacity: 0.2, width: 1 }
-      },
-      interactivity: {
-        events: { onHover: { enable: true, mode: "repulse" }, onClick: { enable: true, mode: "push" } },
-        modes: { repulse: { distance: 80 }, push: { quantity: 4 } }
-      },
-      detectRetina: true
-    });
-  </script>
+                // Show Toast Notification
+                const toast = document.getElementById('toast');
+                const toastMsg = document.getElementById('toast-msg');
+                toastMsg.textContent = `Copied: ${text}`;
+                toast.classList.add('show');
+
+                clearTimeout(toastTimeout);
+                toastTimeout = setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 2500);
+            });
+        }
+    </script>
+
 </body>
 </html>
